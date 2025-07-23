@@ -53,7 +53,8 @@ python app.py
 
 The Gradio interface will launch in your browser.
 
-## or try accessing https://huggingface.co/spaces/hanaMedhat/vehicleDetection
+## or try accessing
+ https://huggingface.co/spaces/hanaMedhat/vehicleDetection but that one is significantly slower
 ---
 
 ## Usage
@@ -76,9 +77,9 @@ are needed for the training.
 - The small model was generally better than the nano (experiments in the notebook could be inspected) but not by too much.. the small model becomes a better choice when we can also quantize and improve its performance thus getting the best of both worlds.
 - I also experimented with number of samples, trying a 500 per positive class and 400 for all negatives (training) and 100 positive and 80 negative (validation) , then i doubled all for the next experiments. The result was improvement in recall and mAP@50-95 especially for classes with less examples (truck). precision remained stable indicating less false positives, and suggesting that as recall improved with more data, the model learned to detect more true objects without increasing false positives — a sign of better generalization rather than overfitting. At least it isnt generating more wrong boxes. 
 - The reason i chose to start with less images in total was because yolo is already trained on coco so it would be overkill to start with a large amount of images and also on a small/nano model
-- the stategy for negatives was to use background images and also images that contain other classes but not the positive ones (car, truck, bus)
-- the above strategy couldve been improved because the model was missing classes and labeling them as background, or maybe the background was dominating many images..
-- overall the evaluation metrics showed the best model (double images amount + s model)
+- The stategy for negatives was to use background images and also images that contain other classes but not the positive ones (car, truck, bus)
+- The above strategy couldve been improved because the model was missing classes and labeling them as background, or maybe the background was dominating many images..
+- Overall the evaluation metrics showed the best model (double images amount + s model)
     -- (yolo11s_2) model had:
 
         mAP@50 ≈ 0.64
