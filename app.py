@@ -35,7 +35,7 @@ def main():
             return image, f"Error: {str(e)}"
 
     with gr.Blocks() as demo:
-        gr.Markdown("# YOLOv8 Inference")
+        gr.Markdown("# YOLO11 Inference")
         gr.Markdown("Upload an image and see predictions. Toggle quantization if needed.")
 
         with gr.Row():
@@ -55,7 +55,7 @@ def main():
             outputs=[result_image, result_text]
         )
 
-    demo.launch()
+    demo.launch(share=True, server_name="0.0.0.0", server_port=7860)
 
 if __name__ == "__main__":
     main()
